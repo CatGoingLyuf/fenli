@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyuf.dao.FileMapper">
+    <resultMap id="BaseResultMap" type="com.lyuf.pojo.File">
+        <!--        column 数据库中的字段，也就是我们在sql语句中搜索到的字段，as后面跟的那些-->
+        <!--        property实体类中定义的字段-->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+        <result column="filesize" property="filesize" jdbcType="VARCHAR"/>
+        <result column="filepath" property="filepath" jdbcType="VARCHAR"/>
+        <result column="filetype" property="filetype" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="DATE"/>
+        <result column="user" property="user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="BaseSql">
+        select *
+    </sql>
+
+    <select id="find" resultType="com.lyuf.pojo.File">
+        <include refid="BaseSql"></include>
+        from file
+        <trim prefix="where" prefixOverrides="and">
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="filename != null and filename != ''">
+                and filename like concat('%',#{filename},'%')
+            </if>
+            <if test="time != null and time != ''">
+                and time = #{time}
+            </if>
+            and user = #{user}
+        </trim>
+    </select>
+    <insert id="addFile" parameterType="com.lyuf.pojo.File">
+        insert into file(filename,filesize,filepath,filetype,time,ip,user)
+        values (#{filename},#{filesize},#{filepath},#{filetype},#{time},#{ip},#{user})
+    </insert>
+
+    <delete id="deleteFileById" parameterType="Integer">
+        delete from  file where id=#{id};
+    </delete>
+
+    <select id="findFileById"  resultType="com.lyuf.pojo.File">
+        select * from file where id=#{id};
+    </select>
+</mapper>

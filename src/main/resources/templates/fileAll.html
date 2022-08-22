@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户文件列表</title>
+</head>
+<body>
+<h2>欢迎：<span th:if="${session.user}!=null" th:text="${session.user.name}">用户</span></h2>
+
+<h3>上传文件</h3>
+<form th:action="@{/files/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="上传">
+    <a th:if="${session.user}!=null" th:href="@{/user/logout}">退出</a>
+</form>
+<br>
+
+<form th:action="@{/files/fileByName}" method="get">
+    名称：<input type="text" name="name" style="width: 500px; height: 50px;">
+    <input type="submit" value="查询" style="width: 100px; height: 50px;">
+</form>
+
+<br>
+
+<hr>
+<h3>文件列表</h3>
+<!--快捷生成 table>tr>th*11   + table键-->
+<table border="5px">
+    <tr>
+        <th>ID</th>
+        <th>文件名称</th>
+        <th>文件路径</th>
+        <th>文件大小</th>
+        <th>文件类型</th>
+        <th>上传时间</th>
+        <th>IP</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="files : ${fileUploadsList}">
+        <th th:text="${files.id}">1</th>
+        <th th:text="${files.filename}">aa.txt</th>
+        <th th:text="${files.filepath}">/file</th>
+        <th th:text="${files.filesize}">1024kb</th>
+        <th th:text="${files.filetype}">text/plain</th>
+        <th th:text="${files.time}">2020-11-2</th>
+        <th th:text="${files.ip}">121.0.0.0</th>
+
+        <th>
+            <a th:href="@{/files/download(filename=${files.filename})}">下载</a>
+            <a th:href="@{/files/delete(id=${files.id})}">删除</a>
+            <!--            <a th:href="@{/files/download(id=${files.id},openStyle='inline')}">在线打开</a>-->
+        </th>
+    </tr>
+</table>
+<hr>
+
+<!--unless时if的反义 为true就不显示-->
+<!--<div style="color: red" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>-->
+</body>
+</html>

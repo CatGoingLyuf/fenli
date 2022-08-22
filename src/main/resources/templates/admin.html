@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员后台</title>
+</head>
+<body>
+<table border="10px">
+    <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="users : ${usersList}">
+        <th th:text="${users.id}">jock</th>
+        <th th:text="${users.name}">jock</th>
+        <th th:text="${users.password}">1234556</th>
+        <th>
+            <a th:href="@{/user/delete(id=${users.id})}">删除</a>
+        </th>
+    </tr>
+</table>
+<hr>
+<h3>增加</h3>
+<form th:action="@{/user/add}" method="post" enctype="multipart/form-data">
+    <input style="width: 100px; height: 50px" type="text" name="name">
+    <input style="width: 100px; height: 50px" type="text" name="password">
+    <input style="width: 100px; height: 50px" type="submit">
+
+</form>
+<br>
+<div>
+    <a href="http://121.40.97.59:8800//adminlogin.html">
+<!--    <a href="http://localhost:8080//login.html">-->
+     <button class="bu" style="width: 320px; height: 50px">返回</button>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>admin登录</title>
+
+    <style>
+
+        #div1 {
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1">
+    <form action="/user/find" method="post">
+        用户名： <input type="text" name="name"><br>
+        <br>
+        密🤦‍码：<input type="password" name="password"><br>
+        <br>
+        <input type="submit" style="width: 260px; height: 50px" value="登录">
+    </form>
+    <a href="http://121.40.97.59:8800//login.html">
+        <!--    <a href="http://localhost:8080//login.html">-->
+        <button class="bu" style="width: 260px; height: 50px">返回</button>
+    </a>
+</div>
+</body>
+</html>
