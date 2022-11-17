@@ -1,41 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户登录</title>
-    <style>
 
-        #div1 {
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 40%;
-            left: 35%;
-            margin-top: -100px;
-            margin-left: -100px;
-        }
-
-    </style>
+    <div class="container">
+        <svg viewBox="0 0 1000 300">
+            <symbol id="line-text">
+                <text text-anchor="middle" x="50%" y="50%" dy=".4em">
+                    yunHome
+                </text>
+            </symbol>
+            <use xlink:href="#line-text" class="text"></use>
+            <use xlink:href="#line-text" class="text"></use>
+            <use xlink:href="#line-text" class="text"></use>
+            <use xlink:href="#line-text" class="text"></use>
+        </svg>
+    </div>
+    <div id="div1" style="color: azure">
+        <form action="/user/login" method="post" >
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp用户名： <input type="text" name="name" style="width: 600px; height: 50px;" class="colorchange1"><br>
+            <br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密&nbsp‍&nbsp&nbsp&nbsp码：<input type="password" name="password" style="width: 600px; height: 50px;" class="colorchange1"><br>
+            <br>
+            <input type="submit" value="登录" style="width: 800px; height: 60px; background-color: blanchedalmond" id="colorchange">
+        </form>
+        <br>
+    </div>
+    <div style=" position: absolute;top: 100%;text-align: end">
+        <a href="http://121.40.97.59:8800//adminlogin.html">
+            <!--    <a href="http://localhost:8800//adminlogin.html">-->
+            <button class="bu" style="width: 100px; height: 20px;color:red;">管理员登录</button>
+        </a>
+    </div>
 </head>
-<body>
-
-<div id="div1">
-    <form action="/user/login" method="post">
-        用户名： <input type="text" name="name" style="width: 800px; height: 50px;"><br>
-        <br>
-        密🤦‍码：<input type="password" name="password" style="width: 800px; height: 50px;"><br>
-        <br>
-        <input type="submit" value="进入" style="width: 1000px; height: 60px;">
-    </form>
-    <br>
-</div>
-<div style=" position: absolute;top: 100%;text-align: end">
-    <a href="http://121.40.97.59:8800//adminlogin.html">
-<!--    <a href="http://localhost:8080//adminlogin.html">-->
-        <button class="bu" style="width: 100px; height: 20px;color:red;">管理员登录</button>
-    </a>
-</div>
-<!--unless时if的反义 为true就不显示-->
-<!--<div style="color: red" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>-->
-</body>
 </html>
+<style>
+
+    #colorchange{
+        background-image: linear-gradient(to right,cornsilk, gray);
+    }
+
+    .colorchange1{
+        background-color: cornsilk;
+        background-image: linear-gradient(to right,cornsilk, gray);
+    }
+    #div1 {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 60%;
+        left: 28%;
+    }
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background-color: rgb(41, 45, 62);
+    }
+
+    .container {
+        font-size: 120px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    svg {
+        position: absolute;
+        width: 100%;
+        height: 60%;
+    }
+
+    .text {
+        fill: none;
+        stroke-width: 5;
+        stroke-dasharray: 0 240;
+        stroke-dashoffset: 0;
+    }
+
+    .text:nth-child(4n + 1) {
+        stroke: rgb(39, 135, 238);
+        animation: text1 4s ease-in-out forwards;
+    }
+
+    .text:nth-child(4n + 2) {
+        stroke: rgb(47, 169, 92);
+        animation: text2 4s ease-in-out forwards;
+    }
+
+    .text:nth-child(4n + 3) {
+        stroke: rgb(249, 189, 56);
+        animation: text3 4s ease-in-out forwards;
+    }
+
+    .text:nth-child(4n + 4) {
+        stroke: rgb(235, 61, 50);
+        animation: text4 4s ease-in-out forwards;
+    }
+
+    @keyframes text1 {
+        100% {
+            stroke-dashoffset: 1000;
+            stroke-dasharray: 60 180;
+        }
+    }
+
+    @keyframes text2 {
+        100% {
+            stroke-dashoffset: 1060;
+            stroke-dasharray: 60 180;
+        }
+    }
+
+    @keyframes text3 {
+        100% {
+            stroke-dashoffset: 1120;
+            stroke-dasharray: 60 180;
+        }
+    }
+
+    @keyframes text4 {
+        100% {
+            stroke-dashoffset: 1180;
+            stroke-dasharray: 60 180;
+        }
+    }
+</style>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <style>
+
+        #div1 {
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 40%;
+            left: 35%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="div1">
+    <form action="/user/login" method="post">
+        用户名： <input type="text" name="name" style="width: 800px; height: 50px;"><br>
+        <br>
+        密🤦‍码：<input type="password" name="password" style="width: 800px; height: 50px;"><br>
+        <br>
+        <input type="submit" value="进入" style="width: 1000px; height: 60px;">
+    </form>
+    <br>
+</div>
+<div style=" position: absolute;top: 100%;text-align: end">
+    <a href="http://121.40.97.59:8800//adminlogin.html">
+<!--    <a href="http://localhost:8800//adminlogin.html">-->
+        <button class="bu" style="width: 100px; height: 20px;color:red;">管理员登录</button>
+    </a>
+</div>
+<!--unless时if的反义 为true就不显示-->
+<!--<div style="color: red" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}"></div>-->
+</body>
+</html>
